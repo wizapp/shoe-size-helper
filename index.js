@@ -1,21 +1,17 @@
-class MMAShoeSizeManager {
+class ShoeSizeManager {
   constructor() {
     const shoeSizes = {};
-    shoeSizes[MMAShoeSizeManager.EU] = this.euShoeSizes();
-    shoeSizes[MMAShoeSizeManager.US] = this.usShoeSizes();
-    shoeSizes[MMAShoeSizeManager.UK] = this.ukShoeSizes();
+    shoeSizes[ShoeSizeManager.EU] = this.euShoeSizes();
+    shoeSizes[ShoeSizeManager.US] = this.usShoeSizes();
+    shoeSizes[ShoeSizeManager.UK] = this.ukShoeSizes();
     this.shoeSizes = shoeSizes;
 
     const shoeSizesPerType = {};
-    shoeSizesPerType[MMAShoeSizeManager.WOMAN] = this.buildShoeSizePerType(
-      MMAShoeSizeManager.WOMAN
-    );
-    shoeSizesPerType[MMAShoeSizeManager.MAN] = this.buildShoeSizePerType(MMAShoeSizeManager.MAN);
-    shoeSizesPerType[MMAShoeSizeManager.CHILD] = this.buildShoeSizePerType(
-      MMAShoeSizeManager.CHILD
-    );
-    shoeSizesPerType[MMAShoeSizeManager.TEENAGER] = this.buildShoeSizePerType(
-      MMAShoeSizeManager.TEENAGER
+    shoeSizesPerType[ShoeSizeManager.WOMAN] = this.buildShoeSizePerType(ShoeSizeManager.WOMAN);
+    shoeSizesPerType[ShoeSizeManager.MAN] = this.buildShoeSizePerType(ShoeSizeManager.MAN);
+    shoeSizesPerType[ShoeSizeManager.CHILD] = this.buildShoeSizePerType(ShoeSizeManager.CHILD);
+    shoeSizesPerType[ShoeSizeManager.TEENAGER] = this.buildShoeSizePerType(
+      ShoeSizeManager.TEENAGER
     );
 
     this.shoeSizesPerType = shoeSizesPerType;
@@ -24,10 +20,10 @@ class MMAShoeSizeManager {
   // https://www.labonnetaille.com/guide-des-tailles/chaussures
 
   buildShoeSizePerType(measurmentType) {
-    // measurmentType: MMAShoeSizeManager.MAN, MMAShoeSizeManager.WOMAN, MMAShoeSizeManager.CHILD, MMAShoeSizeManager.TEENAGER
+    // measurmentType: ShoeSizeManager.MAN, ShoeSizeManager.WOMAN, ShoeSizeManager.CHILD, ShoeSizeManager.TEENAGER
     const finalShoeSizes = {};
 
-    let zone = MMAShoeSizeManager.EU;
+    let zone = ShoeSizeManager.EU;
     if (this.shoeSizes[zone]) {
       const sizes = this.shoeSizes[zone][measurmentType];
       if (sizes) {
@@ -40,7 +36,7 @@ class MMAShoeSizeManager {
       }
     }
 
-    zone = MMAShoeSizeManager.US;
+    zone = ShoeSizeManager.US;
     if (this.shoeSizes[zone]) {
       const sizes = this.shoeSizes[zone][measurmentType];
       if (sizes) {
@@ -53,7 +49,7 @@ class MMAShoeSizeManager {
       }
     }
 
-    zone = MMAShoeSizeManager.US;
+    zone = ShoeSizeManager.US;
     if (this.shoeSizes[zone]) {
       const sizes = this.shoeSizes[zone][measurmentType];
       if (sizes) {
@@ -87,16 +83,16 @@ class MMAShoeSizeManager {
   /**
    * 
    * @param {*} shoeSize Requested shoe size in given zone for given genre type
-   * @param {*} zone Geographical area: MMAShoeSizeManager.EU, MMAShoeSizeManager.US or MMAShoeSizeManager.US
-   * @param {*} type gender type: MMAShoeSizeManager.CHILD, MMAShoeSizeManager.TEENAGER, MMAShoeSizeManager.MAN or MMAShoeSizeManager.WOMAN
+   * @param {*} zone Geographical area: ShoeSizeManager.EU, ShoeSizeManager.US or ShoeSizeManager.US
+   * @param {*} type gender type: ShoeSizeManager.CHILD, ShoeSizeManager.TEENAGER, ShoeSizeManager.MAN or ShoeSizeManager.WOMAN
    * @return {Object} Most accurate found foot size given parameters
    *   Example:
    *      {
    *        foot: 26.6, // centimeter
    *        shoeSize: { // Corresponding shoe size description
    *          size: 41.5,
-   *          type: MMAShoeSizeManager.MAN,
-   *          zone: MMAShoeSizeManager.EU
+   *          type: ShoeSizeManager.MAN,
+   *          zone: ShoeSizeManager.EU
    *        }
    *      }
    */
@@ -138,8 +134,8 @@ class MMAShoeSizeManager {
   /**
    * 
    * @param {*} footSize Foot size in centimeters
-   * @param {*} zone Geographical area: MMAShoeSizeManager.EU, MMAShoeSizeManager.US or MMAShoeSizeManager.US
-   * @param {*} type gender type: MMAShoeSizeManager.CHILD, MMAShoeSizeManager.TEENAGER, MMAShoeSizeManager.MAN or MMAShoeSizeManager.WOMAN
+   * @param {*} zone Geographical area: ShoeSizeManager.EU, ShoeSizeManager.US or ShoeSizeManager.US
+   * @param {*} type gender type: ShoeSizeManager.CHILD, ShoeSizeManager.TEENAGER, ShoeSizeManager.MAN or ShoeSizeManager.WOMAN
    * @return {Object} Size description most accurate for given parameters:
    *  Example:
    *      {
@@ -400,12 +396,12 @@ class MMAShoeSizeManager {
   }
 }
 
-MMAShoeSizeManager.WOMAN = 'woman';
-MMAShoeSizeManager.MAN = 'man';
-MMAShoeSizeManager.CHILD = 'child';
-MMAShoeSizeManager.TEENAGER = 'teenager';
-MMAShoeSizeManager.EU = 'eu';
-MMAShoeSizeManager.US = 'us';
-MMAShoeSizeManager.UK = 'uk';
+ShoeSizeManager.WOMAN = 'woman';
+ShoeSizeManager.MAN = 'man';
+ShoeSizeManager.CHILD = 'child';
+ShoeSizeManager.TEENAGER = 'teenager';
+ShoeSizeManager.EU = 'eu';
+ShoeSizeManager.US = 'us';
+ShoeSizeManager.UK = 'uk';
 
-module.exports = MMAShoeSizeManager;
+module.exports = ShoeSizeManager;
