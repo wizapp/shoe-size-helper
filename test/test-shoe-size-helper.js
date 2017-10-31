@@ -1,6 +1,6 @@
-const ShoeSizeHelper = require('../index.js');
+const ShoeSizeHelper = require('../shoe-size-helper.js');
 
-shoeSizeHelper = new ShoeSizeHelper();
+shoeSizeHelper = ShoeSizeHelper.shared;
 
 const sizeToSearchFor = 27.56;
 const foundShoeSize = shoeSizeHelper.findShoeSize(
